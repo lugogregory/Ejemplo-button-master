@@ -3,7 +3,7 @@
 }
 
 .Col {
-  width: 33%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,21 +1,32 @@
 import React from 'react';
-import Button from './Button';
-import './App.css';
 import { ReactComponent as Delete} from './assets/icon-delete.svg';
 import { ReactComponent as Excel} from './assets/icon-excel.svg';
 import { ReactComponent as Editar} from './assets/icon-edit.svg';
 import { ReactComponent as Warning} from './assets/exclamation-triangle-solid.svg';
+import { MessageBox, Button } from 'react-typescript-global-components';
+import './App.css';
+
 
 const App: React.FC = () => {
 
   const [propiedades, setPropiedades] = React.useState('');
-
+  
   return (
     <div className="App">
+      
       <header className="App-header">
         <div className="Col">
           <p>
-            Button MASTER
+            Componente MessageBox
+          </p>
+          <MessageBox message={'componente sin indiccar ninguna propiedad'} />
+          <MessageBox typeId={2} width={250} height={70} message={'Componente declarando typeId={2}, width y height'} />
+          <MessageBox typeId={3} top={300} position={'absolute'} opacity={50} message={'Componente indicando typeId={3} position={absolute} top={300}'} />
+          <MessageBox typeId={4} fontSize={16} widthImg={25} heightImg={25} message={'Componente indicando typeId={4}, widthImg, heightImg y fontSize '} />
+        </div>
+        <div className="Col">
+          <p>
+            Button - ejemplo de parametros
           </p>
           <article>
             <Button onClick={() => setPropiedades('Button sin Props')}> Sin Props</Button>
