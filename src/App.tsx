@@ -3,7 +3,7 @@ import { ReactComponent as Delete} from './assets/icon-delete.svg';
 import { ReactComponent as Excel} from './assets/icon-excel.svg';
 import { ReactComponent as Editar} from './assets/icon-edit.svg';
 import { ReactComponent as Warning} from './assets/exclamation-triangle-solid.svg';
-import { MessageBox, Button } from 'react-typescript-global-components';
+import { MessageBox, Button } from 'solbooking-react';
 import './App.css';
 
 
