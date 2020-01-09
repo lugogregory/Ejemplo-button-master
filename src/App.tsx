@@ -7,14 +7,15 @@ import { MessageBox, Button, Input } from 'solbooking-react';
 import './App.css';
 //import Input from './Migrated-components/Input';
 
-
 const App: React.FC = () => {
 
   const [propiedades, setPropiedades] = React.useState('');
   const [valorInput, setvalorInput] = React.useState('');
+  const [error, setError] = React.useState('E');
 
   const handleChange = (name: string, value: string) => {
     setvalorInput(value);
+    value !== '' ? setError('') : setError('E');
   }
   
   return (
@@ -35,6 +36,7 @@ const App: React.FC = () => {
                   value={valorInput}
                   onChange={handleChange}
                   fontSize={14}
+                  error={error}
                   
             />
             <p>{valorInput}</p>

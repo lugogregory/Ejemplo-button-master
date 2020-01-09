@@ -7,6 +7,22 @@ export const Wrapper = styled.div<{ colorFocus: string | undefined }>`
   input:focus {
     border: 1px solid ${props => (props.colorFocus ? props.colorFocus : '#e2e2e2')};
   }
+
+  .form-label {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #555555;
+  }
+  
+  .form-label-error {
+    color: red;
+  }
+
+  .form-error {
+    border-color: red !important;
+  }
+
 `;
 
 type Props = {
