@@ -3,13 +3,19 @@ import { ReactComponent as Delete} from './assets/icon-delete.svg';
 import { ReactComponent as Excel} from './assets/icon-excel.svg';
 import { ReactComponent as Editar} from './assets/icon-edit.svg';
 import { ReactComponent as Warning} from './assets/exclamation-triangle-solid.svg';
-import { MessageBox, Button } from 'solbooking-react';
+import { MessageBox, Button, Input } from 'solbooking-react';
 import './App.css';
+//import Input from './Migrated-components/Input';
 
 
 const App: React.FC = () => {
 
   const [propiedades, setPropiedades] = React.useState('');
+  const [valorInput, setvalorInput] = React.useState('');
+
+  const handleChange = (name: string, value: string) => {
+    setvalorInput(value);
+  }
   
   return (
     <div className="App">
@@ -21,8 +27,17 @@ const App: React.FC = () => {
           </p>
           <MessageBox message={'componente sin indiccar ninguna propiedad'} />
           <MessageBox typeId={2} width={250} height={70} message={'Componente declarando typeId={2}, width y height'} />
-          <MessageBox typeId={3} top={300} position={'absolute'} opacity={50} message={'Componente indicando typeId={3} position={absolute} top={300}'} />
+          <MessageBox typeId={3} top={1} opacity={50} message={'Componente indicando typeId={3} position={absolute} top={1}'} />
           <MessageBox typeId={4} fontSize={16} widthImg={25} heightImg={25} message={'Componente indicando typeId={4}, widthImg, heightImg y fontSize '} />
+          <Input
+                  label={'prueba de label'}            
+                  name="name"
+                  value={valorInput}
+                  onChange={handleChange}
+                  fontSize={14}
+                  
+            />
+            <p>{valorInput}</p>
         </div>
         <div className="Col">
           <p>
