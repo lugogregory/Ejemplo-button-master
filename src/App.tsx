@@ -3,20 +3,33 @@ import { ReactComponent as Delete} from './assets/icon-delete.svg';
 import { ReactComponent as Excel} from './assets/icon-excel.svg';
 import { ReactComponent as Editar} from './assets/icon-edit.svg';
 import { ReactComponent as Warning} from './assets/exclamation-triangle-solid.svg';
-import { MessageBox, Button, Input } from 'solbooking-react';
+import { MessageBox, Input, Button } from 'solbooking-react';
 import './App.css';
-//import Input from './Migrated-components/Input';
 
 const App: React.FC = () => {
 
   const [propiedades, setPropiedades] = React.useState('');
   const [valorInput, setvalorInput] = React.useState('');
   const [error, setError] = React.useState('E');
+  const [imageUrl, setImageUrl] = React.useState('');
 
   const handleChange = (name: string, value: string) => {
     setvalorInput(value);
     value !== '' ? setError('') : setError('E');
   }
+
+  const handleAddImage = async (event: React.FormEvent<HTMLInputElement> ) => {
+    event.preventDefault();
+    
+    const file: File | undefined = event.currentTarget.files?.[0];
+     
+    if (!file?.type.includes("image/")) {
+       alert('NO es una imagen');
+    } else{
+      setImageUrl(window.URL.createObjectURL(file));
+    }
+  };
+
   
   return (
     <div className="App">
@@ -31,7 +44,7 @@ const App: React.FC = () => {
           <MessageBox typeId={3} top={1} opacity={50} message={'Componente indicando typeId={3} position={absolute} top={1}'} />
           <MessageBox typeId={4} fontSize={16} widthImg={25} heightImg={25} message={'Componente indicando typeId={4}, widthImg, heightImg y fontSize '} />
           <Input
-                  label={'prueba de label'}            
+                  label={'Input con label opcional'}            
                   name="name"
                   value={valorInput}
                   onChange={handleChange}
@@ -40,6 +53,26 @@ const App: React.FC = () => {
                   
             />
             <p>{valorInput}</p>
+
+
+            <div className="upload-image">
+                <div className="image-content">
+                  <img
+                    src={imageUrl}
+                    alt="upload img"
+                    width = {150}
+                  />
+                </div>
+                <input id="contained-button-file" type="file" accept="image/*" style={{ display: 'none' }}
+                      onChange={(e: React.FormEvent<HTMLInputElement>) => { handleAddImage(e) }}
+                      onClick={(e: React.FormEvent<HTMLInputElement>) => { e.currentTarget.files = null }}
+                />
+
+              <label htmlFor="contained-button-file">
+                <Button Icon={Editar} paddingIconToText = {8} upload={true} >Button upload</Button>
+              </label>
+            </div>
+
         </div>
         <div className="Col">
           <p>
